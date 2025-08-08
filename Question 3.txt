@@ -1,0 +1,65 @@
+import java.util.*;
+class Graph1{
+    int n;
+    List<List<Integer>> ll=new ArrayList<>();
+    Graph1(int n){
+        this.n=n;
+        for(int i=0;i<n;i++){
+            ll.add(new ArrayList<>());
+        }
+    }
+    void addEdge(char a,char b,int x){
+        int i=(int)a-x;
+        int j=(int)b-x;
+        ll.get(i).add(j);
+        ll.get(j).add(i);
+    }
+    List<Character> bfs(char a,int x){
+        Queue<Integer> qq=new LinkedList<>();
+        List<Character> ch=new ArrayList<>();
+        boolean[] visited=new boolean[ll.size()];
+        int val=(int)a-x;
+        qq.add(val);
+        visited[val]=true;
+        while(!qq.isEmpty()){
+            int v=qq.remove();
+            ch.add((char)(v+x));
+            for(int i=0;i<ll.get(v).size();i++){
+                int c=ll.get(v).get(i);
+                if(!visited[c]){
+                    qq.add(c);
+                    visited[c]=true;
+                }
+            }
+        }
+        return ch;
+    }
+}
+public class BFS {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Number of computers: ");
+        int n = sc.nextInt();
+        char[] c = new char[n];
+
+        System.out.print("Computers: ");
+        for (int i = 0; i < n; i++) {
+            c[i] = sc.next().charAt(0);
+        }
+        Arrays.sort(c);
+        int x = (int)(c[0]);
+        Graph1 g = new Graph1(n);
+        System.out.println("Connections: ");
+        for (int i = 0; i < n-1; i++) {
+            char a = sc.next().charAt(0);
+            char b = sc.next().charAt(0);
+            g.addEdge(a, b, x);
+        }
+        List<Character> ch = g.bfs(c[0], x);
+        System.out.print("Broadcast Order: ");
+        for (char i : ch) {
+            System.out.print(i + " ");
+        }
+
+    }
+}

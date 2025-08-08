@@ -1,0 +1,67 @@
+
+import java.util.*;
+public class Railway {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int V=sc.nextInt();
+        char[] ch=new char[V];
+        System.out.print("cities: ");
+        for(int i=0;i<V;i++){
+            ch[i]=sc.next().charAt(0);
+        }
+        List<Graph> l=new ArrayList<>();
+        while(true){
+            char a=sc.next().charAt(0);
+            char b=sc.next().charAt(0);
+            int w=sc.nextInt();
+            if(w==-1) break;
+            l.add(new Graph(a,b,w));
+        }
+        l.sort(Comparator.comparingInt(a->a.weigh));
+        Disjoint d=new Disjoint(V);
+        int sum=0;
+        System.out.println("Selected Edges in MST: ");
+        for(Graph g:l){
+            if(d.union(g.src,g.dest)){
+                System.out.println(g.src+" - "+g.dest+" : "+g.weigh);
+                sum+=g.weigh;
+            }
+        }
+        System.out.println("Minimum Cost of Spanning Tree: "+sum);
+
+    }
+}
+class Graph{
+    char src,dest;
+    int weigh;
+    Graph(char s,char d,int w){
+        this.src=s;
+        this.dest=d;
+        this.weigh=w;
+    }
+}
+class Disjoint{
+    int[] parent;
+    Disjoint(int v){
+        parent=new int[v];
+        for(int i=0;i<v;i++){
+            parent[i]=i;
+        }
+    }
+    int find(int x){
+        if(parent[x]!=x)
+            parent[x]=find(parent[x]);
+        return parent[x];
+    }
+    boolean union(char a,char b){
+        int i=(int)a-65;
+        int j=(int)b-65;
+        int a1=find(i);
+        int b1=find(j);
+        if(a1==b1){
+            return false;
+        }
+        parent[a1]=b1;
+        return true;
+    }
+}

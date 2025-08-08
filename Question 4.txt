@@ -1,0 +1,63 @@
+import java.util.*;
+class Pair{
+    int v,p,w;
+    Pair(int v,int p,int w){
+        this.v=v;
+        this.p=p;
+        this.w=w;
+    }
+    void prim(List<List<int[]>> ll,int V){
+        boolean[] visited=new boolean[V];
+        PriorityQueue<Pair> pq=new PriorityQueue<>(Comparator.comparingInt(a->a.w));
+        pq.offer(new Pair(0,-1,0));
+        int sum=0;
+        System.out.println("Edges of Graph: ");
+        while(!pq.isEmpty()){
+            Pair curr=pq.poll();
+            if(visited[curr.v]) continue;
+            visited[curr.v]=true;
+            if(curr.p!=-1){
+                System.out.println(curr.p+" - "+curr.v+" ( "+curr.w+" )");
+                sum+=curr.w;
+            }
+            for(int[] neigh : ll.get(curr.v)){
+                if(!visited[neigh[0]])
+                    pq.offer(new Pair(neigh[0],curr.v,neigh[1]));
+            }
+        }
+        System.out.println("Minimum Cost of the tree: "+sum);
+    }
+}
+public class Prim {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Number of computers: ");
+        int n = sc.nextInt();
+        char[] c = new char[n];
+        Pair p=new Pair(0,0,0);
+        System.out.print("Computers: ");
+        for (int i = 0; i < n; i++) {
+            c[i] = sc.next().charAt(0);
+        }
+        Arrays.sort(c);
+        int x = (int)(c[0]);
+        System.out.println("No of Edges: ");
+        int ed=sc.nextInt();
+        System.out.println("Connections: ");
+        List<List<int[]>> l=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            l.add(new ArrayList<>());
+        }
+        for (int i = 0; i < ed; i++) {
+            char a = sc.next().charAt(0);
+            char b = sc.next().charAt(0);
+            int w=sc.nextInt();
+            int a1=(int)a-x;
+            int b1=(int)b-x;
+            l.get(a1).add(new int[]{b1,w});
+            l.get(b1).add(new int[]{b1,w});
+        }
+        p.prim(l,n);
+    }
+
+}

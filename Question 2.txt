@@ -1,0 +1,57 @@
+import java.util.*;
+class Edges{
+    int v,p,w;
+    Edges(int v,int p,int w){
+        this.v=v;
+        this.p=p;
+        this.w=w;
+    }
+}
+public class Main{
+    public static void main(String arhg[]){
+        int V=5;
+        List<List<int[]>> l=new ArrayList<>();
+        for(int i=0;i<V;i++){
+            l.add(new ArrayList<>());
+        }
+        l.get(0).add(new int[]{1,2});
+        l.get(0).add(new int[]{2,3});
+
+        l.get(1).add(new int[]{2,1});
+        l.get(1).add(new int[]{3,4});
+
+        l.get(2).add(new int[]{4,6});
+        l.get(2).add(new int[]{3,5});
+        l.get(2).add(new int[]{1,1});
+
+        l.get(3).add(new int[]{2,5});
+        l.get(3).add(new int[]{4,7});
+        l.get(3).add(new int[]{1,4});
+
+        l.get(4).add(new int[]{3,7});
+        l.get(4).add(new int[]{2,6});
+        prims(l,V);
+
+    }
+    static void prims(List<List<int[]>> l,int V) {
+        boolean[] visited = new boolean[V];
+        PriorityQueue<Edges> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a.w));
+        pq.offer(new Edges(0, -1, 0));
+        int sum=0;
+        while (!pq.isEmpty()) {
+            Edges current = pq.poll();
+            if (visited[current.v]) continue;
+            visited[current.v] = true;
+            if (current.p != -1) {
+                System.out.println((char) (current.v + 'a') + " - " + (char) (current.p + 'a') + " weight: " + current.w);
+                sum+=current.w;
+            }
+            for (int nei[] : l.get(current.v)) {
+                if (!visited[nei[0]]) {
+                    pq.offer(new Edges(nei[0], current.v, nei[1]));
+                }
+            }
+        }
+        System.out.println(sum);
+    }
+}
