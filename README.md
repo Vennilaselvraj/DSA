@@ -1,4 +1,6 @@
-Question 1: There are total n number of Monkeys sitting on the branches of a huge Tree. As travelers offer Bananas and Peanuts, the Monkeys jump down the Tree. If every Monkey can eat k Bananas and j Peanuts. If total m number of Bananas and p number of Peanuts are offered by travelers, calculate how many Monkeys remain on the Tree after some of them jumped down to eat.
+Question 1
+
+There are total n number of Monkeys sitting on the branches of a huge Tree. As travelers offer Bananas and Peanuts, the Monkeys jump down the Tree. If every Monkey can eat k Bananas and j Peanuts. If total m number of Bananas and p number of Peanuts are offered by travelers, calculate how many Monkeys remain on the Tree after some of them jumped down to eat.
 At a time one Monkeys gets down and finishes eating and go to the other side of the road. The Monkey who climbed down does not climb up again after eating until the other Monkeys finish eating. Monkey can either eat k Bananas or j Peanuts. If for last Monkey there are less than k Bananas left on the ground or less than j Peanuts left on the ground, only that Monkey can eat Bananas(<k) along with the Peanuts(<j).
 Write code to take inputs as n, m, p, k, j and return the number of Monkeys left on the Tree. Where, n= Total no of Monkeys k= Number of eatable Bananas by Single Monkey (Monkey that jumped down last may get less than k Bananas) j = Number of eatable Peanuts by single Monkey(Monkey that jumped down last may get less than j Peanuts) m = Total number of Bananas p = Total number of Peanuts
 Remember that the Monkeys always eat Bananas and Peanuts, so there is no possibility of k and j having a value zero
@@ -14,6 +16,7 @@ For any wrong input display INVALID INPUT
 ==========================================================================================================
 
 Question 2 :
+
 A railway authority is planning to lay railway tracks to connect N cities. Each possible track between two cities has a certain cost of construction. The goal is to connect all the cities with the minimum total cost, without forming any circular routes (cycles).
 You are hired as a software engineer to help simulate the minimum cost to connect all cities using railway tracks. Use Prim's Algorithm to determine the Minimum Spanning Tree (MST) and print the total cost along with the selected connections.
 
@@ -27,7 +30,9 @@ B - C with cost 1 A - B with cost 2 B - D with cost 4 C - E with cost 6
 
 ==========================================================================================================
 
-Question 3: You are working as a network administrator for a company. The company has several computers (nodes) connected via network cables (edges). The connections are bidirectional, and not all computers are directly connected to each other.
+Question 3:
+
+You are working as a network administrator for a company. The company has several computers (nodes) connected via network cables (edges). The connections are bidirectional, and not all computers are directly connected to each other.
 Sometimes, when a computer sends a broadcast message, it should reach all other computers in the network in the shortest number of hops (i.e., fewest intermediate computers). You are tasked to simulate this broadcast operation using Breadth-First Search (BFS).
 Your goal is to write a function that:
 Traverses the network from a given source computer
@@ -50,7 +55,8 @@ Start: P
 Output :
 Broadcast Order: P, Q, R, S, T, U
 
-========================================================================================================== Question 4:
+========================================================================================================== 
+Question 4:
 
 You are working as a network engineer responsible for ensuring that all parts of a company's internal computer network are properly connected.
 The network consists of several computers (nodes) connected by network cables (edges with weights representing latency). However, due to missing or faulty cables, some computers might be disconnected from others, forming separate components.
