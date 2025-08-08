@@ -114,4 +114,151 @@ Total Minimum Cost = 10
 Total Minimum Cost: 13 */
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 6:
 
+A telecom company is tasked with restoring communication lines after a massive storm damaged their network in multiple cities.
+
+They have a list of possible fiber-optic cable connections between cities, along with the cost of laying the cable.
+
+The company’s goals are:
+
+Reconnect all cities so that any city can communicate with any other city (directly or indirectly).
+
+Minimize the total cost of laying cables.
+
+Avoid cycles in the network to prevent data packet looping.
+
+If there are multiple ways to achieve the same minimum cost, choose the one with more high-speed (priority) links.
+
+Priority links are marked in the data with a flag (1 for high-speed, 0 for normal).
+
+When comparing equal-cost MSTs, prefer the one with a greater count of high-speed links.
+
+You must output:
+
+The total cost of the selected network.
+
+The list of edges (city1, city2, cost, priorityFlag) in the order they were added.
+	
+Test case 01 :
+
+4 5
+1 2 1 1
+2 3 2 0
+3 4 1 1
+4 1 2 0
+1 3 3 1
+
+Total Cost: 4
+Edges in MST:
+1 2 1 1
+3 4 1 1
+2 3 2 0
+
+Test case 02  :
+
+5 6
+1 2 3 0
+2 3 4 0
+3 4 2 0
+4 5 6 0
+1 5 5 0
+2 5 4 0
+Total Cost: 13
+Edges in MST:
+3 4 2 0
+1 2 3 0
+2 3 4 0
+2 5 4 0
+
+Test case 03 :
+
+5 6
+1 2 2 1
+2 3 2 0
+3 4 2 1
+4 5 2 0
+1 5 2 1
+2 4 2 0
+Total Cost: 8
+Edges in MST:
+1 2 2 1
+3 4 2 1
+1 5 2 1
+2 3 2 0
+
+=======================================================================================================================
+
+Question 7:
+
+You are working as a data security analyst in a cyber-surveillance unit.
+Your system receives encoded messages from agents in the field.
+These messages contain a hidden code word that follows a specific rule:
+
+The hidden code word is the longest substring of the message that:
+
+Starts and ends with the same letter (case-insensitive).
+
+Contains at least one vowel (a, e, i, o, u).
+
+Does not contain any digit.
+
+If there are multiple substrings with the same length, choose the lexicographically smallest one.
+
+If no such substring exists, return "NO CODE".
+
+Test case 01 
+
+message = "abxbae"
+
+Output: abxba
+
+Test case 02 
+
+message = "xy123z"
+Output: NO CODE
+
+Test case 03 :
+
+message = "momentsareawesome"
+Output: momentsaream
+
+=========================================================================================================================
+
+Question 8:
+
+A warehouse stores products in multiple bins arranged in a single row. Each bin contains a certain number of items.
+The warehouse receives daily order requests, and for each order, workers have to pick consecutive bins so that the total number of items picked exactly matches the order quantity.
+
+However, due to restrictions:
+
+Workers cannot pick from more than K bins for a single order.
+
+Workers must choose bins in their current order (no reordering allowed).
+
+If multiple sets of bins satisfy the order, choose the one with the smallest starting bin index.
+
+Your task is to find the start and end index of the bins from which the workers should pick items for each order.
+If it is not possible to fulfill the order under these constraints, return -1 -1.
+
+Test case 01
+
+bins = [5, 2, 7, 3, 1, 5, 2]
+orderQuantity = 8
+K = 3
+Output: 5 7
+
+
+Test case 02 
+
+bins = [1, 2, 3, 4, 5]
+orderQuantity = 9
+K = 2
+Output: 4 5
+
+Test Case 03:
+
+bins = [4, 4, 4, 4]
+orderQuantity = 8
+K = 2
+Output: 1 2
